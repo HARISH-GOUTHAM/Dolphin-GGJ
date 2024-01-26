@@ -46,22 +46,13 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""SteerLeftRight"",
-                    ""type"": ""Button"",
+                    ""name"": ""Steer"",
+                    ""type"": ""Value"",
                     ""id"": ""ece83a88-820e-4b0b-96e6-b60030257c53"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SteerUpDown"",
-                    ""type"": ""Button"",
-                    ""id"": ""c52207cc-d37a-4548-b0b9-a3e02cc1529e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Dash"",
@@ -71,15 +62,6 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Camera"",
-                    ""type"": ""Value"",
-                    ""id"": ""6ae64e24-8fbf-4b2b-8764-98b1a955fd97"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -106,72 +88,6 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""ControllerLs"",
-                    ""id"": ""414c9709-0b3c-4c01-bf34-4d3b92dab3ed"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SteerLeftRight"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""8d65574a-a53b-4c86-8986-b038acc6d30a"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Controller"",
-                    ""action"": ""SteerLeftRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""e10ef20c-68ec-4df8-9470-1f983cb4eae0"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Controller"",
-                    ""action"": ""SteerLeftRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""ControllerLs"",
-                    ""id"": ""dc961922-6c44-4f46-b224-3f47da7081e4"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SteerUpDown"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""7410e537-4151-497e-8928-6fd3f57ddf76"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Controller"",
-                    ""action"": ""SteerUpDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""e1e8c178-8831-4769-9b6a-9dd3df12ef03"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Controller"",
-                    ""action"": ""SteerUpDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""98934c58-39e7-4773-a22d-dcb4a799cbea"",
                     ""path"": ""<Gamepad>/leftShoulder"",
@@ -183,8 +99,91 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""ControllerRs"",
-                    ""id"": ""a8e5b718-b364-467e-87f1-f7a40b5873e6"",
+                    ""name"": ""2D Vector"",
+                    ""id"": ""b27e0072-8238-4488-938e-ff1fd071741b"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""c6c9a3d6-2599-44af-afcd-cddb8a5ea11c"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""591add78-3f4f-48aa-973f-1c216ef1fad3"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""5a20b452-8df4-43fa-baf5-2b7cbc370e97"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""0849dd02-2ee1-4493-9933-47c48699697c"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
+            ""name"": ""CameraLook"",
+            ""id"": ""4ee99997-6bfe-425e-9b90-9dc2746b1b96"",
+            ""actions"": [
+                {
+                    ""name"": ""Camera"",
+                    ""type"": ""Value"",
+                    ""id"": ""1257b2a6-128d-47ae-afad-d715a27e6727"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f689b91b-db97-4383-9b8b-9c57ce46c010"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""bc6e5933-4fe6-4615-8c6f-602e9e388861"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -195,44 +194,44 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""07389590-fa55-4c29-b4c4-158aeaed84f3"",
+                    ""id"": ""01486e43-a969-4bdd-86f8-b2f736fd2511"",
                     ""path"": ""<Gamepad>/rightStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Controller"",
+                    ""groups"": """",
                     ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""92d04757-aa72-4493-80be-d6309aa9a246"",
+                    ""id"": ""7700bde8-c3d9-44e2-b1fe-c0d342d79d44"",
                     ""path"": ""<Gamepad>/rightStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Controller"",
+                    ""groups"": """",
                     ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""e1f87668-3112-48f7-aef5-aed6cbf20a1c"",
-                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""id"": ""c2ac08c7-3b31-4811-a715-ae41363b2924"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Controller"",
+                    ""groups"": """",
                     ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""fc246e1c-36bf-43a8-add1-e70fcf21b6ae"",
-                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""id"": ""b3cd407c-f118-4b38-b607-6ce93571163e"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Controller"",
+                    ""groups"": """",
                     ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -274,10 +273,11 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
         m_DolphinMovement = asset.FindActionMap("DolphinMovement", throwIfNotFound: true);
         m_DolphinMovement_Accelerate = m_DolphinMovement.FindAction("Accelerate", throwIfNotFound: true);
         m_DolphinMovement_Reverse = m_DolphinMovement.FindAction("Reverse", throwIfNotFound: true);
-        m_DolphinMovement_SteerLeftRight = m_DolphinMovement.FindAction("SteerLeftRight", throwIfNotFound: true);
-        m_DolphinMovement_SteerUpDown = m_DolphinMovement.FindAction("SteerUpDown", throwIfNotFound: true);
+        m_DolphinMovement_Steer = m_DolphinMovement.FindAction("Steer", throwIfNotFound: true);
         m_DolphinMovement_Dash = m_DolphinMovement.FindAction("Dash", throwIfNotFound: true);
-        m_DolphinMovement_Camera = m_DolphinMovement.FindAction("Camera", throwIfNotFound: true);
+        // CameraLook
+        m_CameraLook = asset.FindActionMap("CameraLook", throwIfNotFound: true);
+        m_CameraLook_Camera = m_CameraLook.FindAction("Camera", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -341,20 +341,16 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
     private List<IDolphinMovementActions> m_DolphinMovementActionsCallbackInterfaces = new List<IDolphinMovementActions>();
     private readonly InputAction m_DolphinMovement_Accelerate;
     private readonly InputAction m_DolphinMovement_Reverse;
-    private readonly InputAction m_DolphinMovement_SteerLeftRight;
-    private readonly InputAction m_DolphinMovement_SteerUpDown;
+    private readonly InputAction m_DolphinMovement_Steer;
     private readonly InputAction m_DolphinMovement_Dash;
-    private readonly InputAction m_DolphinMovement_Camera;
     public struct DolphinMovementActions
     {
         private @DolphinInputs m_Wrapper;
         public DolphinMovementActions(@DolphinInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Accelerate => m_Wrapper.m_DolphinMovement_Accelerate;
         public InputAction @Reverse => m_Wrapper.m_DolphinMovement_Reverse;
-        public InputAction @SteerLeftRight => m_Wrapper.m_DolphinMovement_SteerLeftRight;
-        public InputAction @SteerUpDown => m_Wrapper.m_DolphinMovement_SteerUpDown;
+        public InputAction @Steer => m_Wrapper.m_DolphinMovement_Steer;
         public InputAction @Dash => m_Wrapper.m_DolphinMovement_Dash;
-        public InputAction @Camera => m_Wrapper.m_DolphinMovement_Camera;
         public InputActionMap Get() { return m_Wrapper.m_DolphinMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -370,18 +366,12 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
             @Reverse.started += instance.OnReverse;
             @Reverse.performed += instance.OnReverse;
             @Reverse.canceled += instance.OnReverse;
-            @SteerLeftRight.started += instance.OnSteerLeftRight;
-            @SteerLeftRight.performed += instance.OnSteerLeftRight;
-            @SteerLeftRight.canceled += instance.OnSteerLeftRight;
-            @SteerUpDown.started += instance.OnSteerUpDown;
-            @SteerUpDown.performed += instance.OnSteerUpDown;
-            @SteerUpDown.canceled += instance.OnSteerUpDown;
+            @Steer.started += instance.OnSteer;
+            @Steer.performed += instance.OnSteer;
+            @Steer.canceled += instance.OnSteer;
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
-            @Camera.started += instance.OnCamera;
-            @Camera.performed += instance.OnCamera;
-            @Camera.canceled += instance.OnCamera;
         }
 
         private void UnregisterCallbacks(IDolphinMovementActions instance)
@@ -392,18 +382,12 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
             @Reverse.started -= instance.OnReverse;
             @Reverse.performed -= instance.OnReverse;
             @Reverse.canceled -= instance.OnReverse;
-            @SteerLeftRight.started -= instance.OnSteerLeftRight;
-            @SteerLeftRight.performed -= instance.OnSteerLeftRight;
-            @SteerLeftRight.canceled -= instance.OnSteerLeftRight;
-            @SteerUpDown.started -= instance.OnSteerUpDown;
-            @SteerUpDown.performed -= instance.OnSteerUpDown;
-            @SteerUpDown.canceled -= instance.OnSteerUpDown;
+            @Steer.started -= instance.OnSteer;
+            @Steer.performed -= instance.OnSteer;
+            @Steer.canceled -= instance.OnSteer;
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
-            @Camera.started -= instance.OnCamera;
-            @Camera.performed -= instance.OnCamera;
-            @Camera.canceled -= instance.OnCamera;
         }
 
         public void RemoveCallbacks(IDolphinMovementActions instance)
@@ -421,6 +405,52 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
         }
     }
     public DolphinMovementActions @DolphinMovement => new DolphinMovementActions(this);
+
+    // CameraLook
+    private readonly InputActionMap m_CameraLook;
+    private List<ICameraLookActions> m_CameraLookActionsCallbackInterfaces = new List<ICameraLookActions>();
+    private readonly InputAction m_CameraLook_Camera;
+    public struct CameraLookActions
+    {
+        private @DolphinInputs m_Wrapper;
+        public CameraLookActions(@DolphinInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Camera => m_Wrapper.m_CameraLook_Camera;
+        public InputActionMap Get() { return m_Wrapper.m_CameraLook; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CameraLookActions set) { return set.Get(); }
+        public void AddCallbacks(ICameraLookActions instance)
+        {
+            if (instance == null || m_Wrapper.m_CameraLookActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CameraLookActionsCallbackInterfaces.Add(instance);
+            @Camera.started += instance.OnCamera;
+            @Camera.performed += instance.OnCamera;
+            @Camera.canceled += instance.OnCamera;
+        }
+
+        private void UnregisterCallbacks(ICameraLookActions instance)
+        {
+            @Camera.started -= instance.OnCamera;
+            @Camera.performed -= instance.OnCamera;
+            @Camera.canceled -= instance.OnCamera;
+        }
+
+        public void RemoveCallbacks(ICameraLookActions instance)
+        {
+            if (m_Wrapper.m_CameraLookActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ICameraLookActions instance)
+        {
+            foreach (var item in m_Wrapper.m_CameraLookActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_CameraLookActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public CameraLookActions @CameraLook => new CameraLookActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -443,9 +473,11 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
     {
         void OnAccelerate(InputAction.CallbackContext context);
         void OnReverse(InputAction.CallbackContext context);
-        void OnSteerLeftRight(InputAction.CallbackContext context);
-        void OnSteerUpDown(InputAction.CallbackContext context);
+        void OnSteer(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+    }
+    public interface ICameraLookActions
+    {
         void OnCamera(InputAction.CallbackContext context);
     }
 }
