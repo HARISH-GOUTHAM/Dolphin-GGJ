@@ -48,20 +48,22 @@ Material:
     - _NormalStrength: 0.51
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RefractStrength: 0.01
-    - _Smoothness: 0.514
+    - _RefractStrength: 0.002
+    - _Smoothness: 1
     - _Speed: 0.05
     - _foamCutout: 7.96
-    - _highFrequency: 0.01
+    - _highFrequency: 0.58
     - _normalStrenght: 0.01
-    - _waveAmplitude: 0.91
-    - _waveSpeed: 3.4
+    - _waveAmplitude: 0.1
+    - _waveLength: 3.99
+    - _waveSpeed: 1
     m_Colors:
     - _DeepColor: {r: 0.063456744, g: 0.23317221, b: 0.4339623, a: 0.6862745}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _FoamScale: {r: 1, g: 1, b: 0, a: 0}
     - _Scale: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _SurfaceColor: {r: 0.27287284, g: 0.70787, b: 0.7924528, a: 0.14901961}
+    - _waveDirection: {r: 0.7853982, g: 3.1415927, b: 3.1415927, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8266170437670034977
 MonoBehaviour:
