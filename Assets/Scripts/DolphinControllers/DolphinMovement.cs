@@ -56,6 +56,7 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
     private void move()
     {
         rb.AddForce(transform.forward*accelerationInput * playerStats.acclerationForce,ForceMode.Acceleration);
+        rb.AddForce(-transform.forward*decelerationInput * playerStats.decclerationForce,ForceMode.Acceleration);
         transform.Rotate(new Vector3(stearInput.y * playerStats.turnSpeed, stearInput.x*playerStats.turnSpeed,0));
 
     }
@@ -76,7 +77,7 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
 
     public void OnReverse(InputAction.CallbackContext context)
     {
-        Debug.Log("accee");
+        decelerationInput=context.ReadValue<float>();
     }
 
     public void OnSteerLeftRight(InputAction.CallbackContext context)
@@ -100,6 +101,11 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
     public void OnSteer(InputAction.CallbackContext context)
     {
         stearInput=context.ReadValue<Vector2>();
+    }
+
+    public void OnResetOrientation(InputAction.CallbackContext context)
+    {
+        transform.rotation =  Quaternion.identity;
     }
 }
 [Serializable]
