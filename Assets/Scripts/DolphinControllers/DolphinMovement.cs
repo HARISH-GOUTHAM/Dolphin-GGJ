@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.Timeline;
 
 public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActions
 {
@@ -16,7 +17,9 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
     [SerializeField] private float decelerationInput;
     [SerializeField] private Vector2 stearInput;
     [SerializeField] private bool canDash;
-    [SerializeField]private bool isUnderWater;
+    [SerializeField] private bool isUnderWater;
+
+    private float lastTimeDashed;
 
 
 
@@ -50,50 +53,63 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
     }
     private void FixedUpdate()
     {
-        move();
+        Move();
+        ApplyDownwardsForce();
     }
 
-    private void move()
+    private void Move()
     {
-        rb.AddForce(transform.forward*accelerationInput * playerStats.acclerationForce,ForceMode.Acceleration);
-        rb.AddForce(-transform.forward*decelerationInput * playerStats.decclerationForce,ForceMode.Acceleration);
-        transform.Rotate(new Vector3(stearInput.y * playerStats.turnSpeed, stearInput.x*playerStats.turnSpeed,0));
+        if (!isUnderWater) return;
 
+        rb.AddForce(transform.forward * accelerationInput * playerStats.acclerationForce, ForceMode.Acceleration);
+        rb.AddForce(-transform.forward * decelerationInput * playerStats.decclerationForce, ForceMode.Acceleration);
+        transform.Rotate(new Vector3(stearInput.y * playerStats.turnSpeed, stearInput.x * playerStats.turnSpeed, 0));
+
+    }
+
+    public void ApplyDownwardsForce()
+    {
+        if(isUnderWater) return;
+        rb.AddForce(Vector3.down*playerStats.DownwardsForce,ForceMode.Force);
+    }
+
+    private void Dash()
+    {
+        if ( lastTimeDashed + playerStats.dashCoolDown <= Time.time&&isUnderWater)
+        {
+            rb.AddForce(transform.forward * playerStats.dashForce, ForceMode.Impulse);
+            lastTimeDashed = Time.time;
+        }
     }
 
     private void OnwaterEnter()
     {
         isUnderWater = true;
+        rb.drag = playerStats.waterDrag;
     }
     private void OnwaterExit()
     {
         isUnderWater = false;
+        rb.drag = playerStats.airDrag;
     }
 
     public void OnAccelerate(InputAction.CallbackContext context)
     {
-        accelerationInput=context.ReadValue<float>();
+        accelerationInput = context.ReadValue<float>();
     }
 
     public void OnReverse(InputAction.CallbackContext context)
     {
-        decelerationInput=context.ReadValue<float>();
+        decelerationInput = context.ReadValue<float>();
     }
 
-    public void OnSteerLeftRight(InputAction.CallbackContext context)
-    {
-        Debug.Log("fe");
-    }
-
-    public void OnSteerUpDown(InputAction.CallbackContext context)
-    {
-        Debug.Log("fefd");
-    }
+    
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.started)
-            Debug.Log("dash");
+        if(context.started )
+        Dash();
+            
     }
 
    
@@ -115,6 +131,11 @@ public class PlayerStats
     public float decclerationForce;
     public float turnSpeed;
     public float dashForce;
+    public int dashCoolDown;
+
+    public float waterDrag;
+    public float airDrag;
+    public float DownwardsForce;
 
     public AudioClip dolphinLaugh;
 
