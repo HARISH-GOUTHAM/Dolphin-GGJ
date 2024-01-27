@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Abstracts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -20,8 +21,10 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
     [SerializeField] private bool isUnderWater;
 
     private float lastTimeDashed;
+    [Header("Interactable")]
     [SerializeField] private Transform interactPoint;
     [SerializeField] private Vector3 interactBoxSize;
+    [SerializeField] private LayerMask interactablelayer;
     private bool isPrimaryInteracting, isSecondaryInteracting;
 
 
@@ -125,17 +128,42 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
         }
         else
         {
-           
+            Collider[] interactables = Physics.OverlapBox(interactPoint.position, interactBoxSize, Quaternion.identity, interactablelayer);
+            Collider closestInteractable = null;
+            //get the closest interactable
+            foreach (var i in interactables)
+            {
+                if (closestInteractable == null)
+                {
+                    closestInteractable = i;
+                }
+                else
+                {
+                    if (Vector3.Distance(i.transform.position, transform.position) <
+                        Vector3.Distance(closestInteractable.transform.position, transform.position))
+                    {
+                        closestInteractable = i;
+                    }
+                }
+            }
+            
+            if (closestInteractable != null)
+            {
+                //pick up the object
+            }
+            
+
         }
     }
 
     public void OnSecondaryInteract(InputAction.CallbackContext context)
     {
+        //perform the action depending on the object that is currently held
     }
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if(context.started )
+        if(context.started)
             Dash();
             
     }
