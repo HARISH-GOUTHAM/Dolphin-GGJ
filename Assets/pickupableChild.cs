@@ -30,8 +30,6 @@ public class pickupableChild : MonoBehaviour,IInteractable
   
     public void EntersWater()
     {
-        rb.useGravity=false;
-        rb.isKinematic = true;
     }
 
 
