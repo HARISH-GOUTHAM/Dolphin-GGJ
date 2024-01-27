@@ -21,7 +21,7 @@ namespace AI.Fisherman
         {
             _animator.SetBool("isHolding",true);
             Invoke(nameof(resetAnim),1f);
-            Invoke(nameof(resetAnim),1f);
+            
         }
 
         void resetAnim()
