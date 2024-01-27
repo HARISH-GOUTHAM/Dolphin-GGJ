@@ -37,5 +37,10 @@ namespace AI.Fisherman
                 lineStart.position
             });
         }
+
+        public void StopInteract()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

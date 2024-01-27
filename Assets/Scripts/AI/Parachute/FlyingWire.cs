@@ -33,5 +33,10 @@ namespace AI.Parachute
                 lineEnd.position
             });
         }
+
+        public void StopInteract()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

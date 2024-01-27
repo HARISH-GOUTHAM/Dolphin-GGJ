@@ -19,4 +19,9 @@ public class PickableObj : MonoBehaviour,IInteractable
     {
         throw new System.NotImplementedException();
     }
+
+    public void StopInteract()
+    {
+       transform.parent = null;
+    }
 }

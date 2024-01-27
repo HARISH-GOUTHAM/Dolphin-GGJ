@@ -8,6 +8,8 @@ namespace Abstracts
         
         
         public void PrimaryInteract(Transform parent = null);
+
+        public void StopInteract();
         
         public void SecondaryInteract();
     }
