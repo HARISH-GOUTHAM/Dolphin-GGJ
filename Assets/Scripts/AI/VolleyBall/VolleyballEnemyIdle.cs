@@ -7,6 +7,8 @@ public class VolleyballEnemyIdle : EnemyBehaviour
 {
     public GameObject volleyball;
     
+    [SerializeField] private Animator _animator;
+    [SerializeField]private string idleAnimationStateName = "Idle";
     
     public override void PerformBehaviour()
     {
@@ -20,7 +22,7 @@ public class VolleyballEnemyIdle : EnemyBehaviour
 
     public override void OnBehaviourStart()
     {
-        
+        _animator.Play(idleAnimationStateName);
     }
     
     void SwitchCaseCondition()

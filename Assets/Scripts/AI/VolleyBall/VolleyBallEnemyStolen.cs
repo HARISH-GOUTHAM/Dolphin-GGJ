@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class VolleyBallEnemyStolen : EnemyBehaviour
 {
+    public Animator animator;
+    public string stolenAnimationStateName = "Stolen";
+    public float stolenAnimationTime = 1.0f;
+    
+    public string beachIdleAnimationStateName = "BeachIdle";
     
 
     public override void PerformBehaviour()
@@ -14,11 +19,18 @@ public class VolleyBallEnemyStolen : EnemyBehaviour
 
     public override void OnBehaviourEnd()
     {
-        throw new System.NotImplementedException();
+       
     }
 
     public override void OnBehaviourStart()
     {
-        throw new System.NotImplementedException();
+       animator.Play(stolenAnimationStateName);
+       Invoke(nameof(PlayAnimation), stolenAnimationTime);
+         
+    }
+    
+    void PlayAnimation()
+    {
+        animator.Play(beachIdleAnimationStateName);
     }
 }
