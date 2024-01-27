@@ -26,6 +26,7 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
     [SerializeField] private Vector3 interactBoxSize;
     [SerializeField] private LayerMask interactablelayer;
     private bool isPrimaryInteracting, isSecondaryInteracting;
+    private Collider interactingObj;
 
 
     [SerializeField] public PlayerStats playerStats;
@@ -122,13 +123,20 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
 
     public void OnPrimaryInteract(InputAction.CallbackContext context)
     {
+        if(!context.started) return;
         if (isPrimaryInteracting)
         {
             //drop the object
+            interactingObj.transform.parent=null;
+            isPrimaryInteracting = false;
+            
+            
         }
         else
         {
             Collider[] interactables = Physics.OverlapBox(interactPoint.position, interactBoxSize, Quaternion.identity, interactablelayer);
+            Debug.Log(interactables);
+            
             Collider closestInteractable = null;
             //get the closest interactable
             foreach (var i in interactables)
@@ -146,10 +154,13 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
                     }
                 }
             }
+            interactingObj = closestInteractable;
             
-            if (closestInteractable != null)
+            if (interactingObj != null)
             {
                 //pick up the object
+                interactingObj.gameObject.GetComponent<IInteractable>().PrimaryInteract(interactPoint);
+                isPrimaryInteracting = true;
             }
             
 
