@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public static class GerstnerWaveDisplacement
+public static class GerstnerWaveDisplacementStatic
 {
     private static Vector3 GerstnerWave(Vector3 position, float steepness, float wavelength, float speed, float direction)
     {
@@ -23,5 +23,33 @@ public static class GerstnerWaveDisplacement
         offset += GerstnerWave(position, steepness, wavelength, speed, directions[3]);
 
         return offset;
+    }
+}
+
+public class GerstnerWaveDisplacement : MonoBehaviour
+{
+    [Header("Waves")] [SerializeField] private float waterObjectHeigth = 0f;
+    [SerializeField] float steepness;
+    [SerializeField] float wavelength;
+    [SerializeField] float speed;
+    [SerializeField] float[] directions = new float[4];
+    
+    public static GerstnerWaveDisplacement instance;
+    
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+    
+    public float GetWaveDisplacement(Vector3 position)
+    {
+        return waterObjectHeigth + GerstnerWaveDisplacementStatic.GetWaveDisplacement(position, steepness, wavelength, speed, directions).y;
     }
 }

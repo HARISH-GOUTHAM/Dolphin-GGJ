@@ -226,6 +226,8 @@ GameObject:
   - component: {fileID: 102573364}
   - component: {fileID: 102573367}
   - component: {fileID: 102573368}
+  - component: {fileID: 102573370}
+  - component: {fileID: 102573369}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -368,6 +370,39 @@ MonoBehaviour:
   m_MoveSpeed: 10
   m_MoveSpeedIncrement: 2.5
   m_Turbo: 10
+--- !u!114 &102573369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102573363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e8acd6b39c7b846af726bcf9c5865c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnWaterEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWaterExit:
+    m_PersistentCalls:
+      m_Calls: []
+  isUnderWater: 0
+--- !u!114 &102573370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102573363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 583b748dcdb7b3c47a16e7df75f968aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  underwaterFog: {r: 0.013127446, g: 0.33780447, b: 0.5566038, a: 0}
+  fogDensity: 0.05
 --- !u!1001 &208166031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1613,7 +1648,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d22f02d2e8de248884b7757ce96600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterHeight: 5
   steepness: 0.12
   wavelength: 12.33
   speed: 4.76
@@ -2913,6 +2947,59 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1580909557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1580909559}
+  - component: {fileID: 1580909558}
+  m_Layer: 0
+  m_Name: GerstnerWaveCsharp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1580909558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580909557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba14804bd21340f09c3337210925e99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterObjectHeigth: 5
+  steepness: 0.12
+  wavelength: 12.33
+  speed: 4.76
+  directions:
+  - 0.9
+  - 0.8
+  - 0.5
+  - 0.7
+--- !u!4 &1580909559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580909557}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 147.29216, y: 0.51785743, z: 179.0011}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1588989201
 GameObject:
   m_ObjectHideFlags: 0
@@ -3214,50 +3301,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -8.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1695208277
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1695208279}
-  - component: {fileID: 1695208278}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1695208278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1695208277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecb07d991c3d8b942a527fcfd35e6d96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1695208279
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1695208277}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 159.7126, y: 69.318954, z: 72.94195}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3981,4 +4024,4 @@ SceneRoots:
   - {fileID: 1590957203}
   - {fileID: 619143171}
   - {fileID: 691391898}
-  - {fileID: 1695208279}
+  - {fileID: 1580909559}

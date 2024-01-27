@@ -8,8 +8,6 @@ public class BuoyantObject : MonoBehaviour
     private readonly Color blue = new(0.2f, 0.67f, 0.92f);
     private readonly Color orange = new(0.97f, 0.79f, 0.26f);
 
-    [Header("Water")]
-    [SerializeField] private float waterHeight = 0.0f;
 
     [Header("Waves")]
     [SerializeField] float steepness;
@@ -54,7 +52,7 @@ public class BuoyantObject : MonoBehaviour
             var effectorPosition = effectors[i].position;
 
             effectorProjections[i] = effectorPosition;
-            effectorProjections[i].y = waterHeight + GerstnerWaveDisplacement.GetWaveDisplacement(effectorPosition, steepness, wavelength, speed, directions).y;
+            effectorProjections[i].y =GerstnerWaveDisplacement.instance.GetWaveDisplacement(effectorPosition);
 
             // gravity
             rb.AddForceAtPosition(Physics.gravity / effectorAmount, effectorPosition, ForceMode.Acceleration);

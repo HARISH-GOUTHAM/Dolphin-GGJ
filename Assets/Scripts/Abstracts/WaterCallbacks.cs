@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,6 @@ using UnityEngine.Events;
 
 public class WaterCallbacks : MonoBehaviour
 {
-    public static float waterLevel = 10f;
     
     public UnityEvent OnWaterEnter;
     public UnityEvent OnWaterExit;
@@ -21,15 +21,21 @@ public class WaterCallbacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(isUnderWater && transform.position.y > waterLevel)
+       if(isUnderWater && transform.position.y > GerstnerWaveDisplacement.instance.GetWaveDisplacement(transform.position))
        {
            isUnderWater = false;
            OnWaterExit.Invoke();
        }
-       else if(!isUnderWater && transform.position.y < waterLevel)
+       else if(!isUnderWater && transform.position.y < GerstnerWaveDisplacement.instance.GetWaveDisplacement(transform.position))
        {
            isUnderWater = true;
            OnWaterEnter.Invoke();
        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(new Vector3(transform.position.x, GerstnerWaveDisplacement.instance.GetWaveDisplacement(transform.position), transform.position.z), 0.5f);
     }
 }

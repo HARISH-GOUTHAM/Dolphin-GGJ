@@ -8,9 +8,10 @@ public class IdleBehaviour : EnemyBehaviour
     private string idleAnimationStateName = "Idle";
     [SerializeField]private Animator _animator;
     
+    
     public override void PerformBehaviour()
     {
-        
+       
     }
 
     public override void OnBehaviourEnd()

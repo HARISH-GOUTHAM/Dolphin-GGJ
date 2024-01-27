@@ -1,14 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using AI;
 using UnityEngine;
 
-enum EnemyState
+public enum EnemyState
 {
     Idle,
     Annoyed
 }
 
+[Serializable]
 struct EnemyStateData
 {
     public EnemyState state;
@@ -49,5 +51,10 @@ public class EnemyAi : MonoBehaviour
         _currentState = _behaviours[_currentBehaviourIndex].state;
         _behaviours[_currentBehaviourIndex].behaviour.OnBehaviourStart();
 
+    }
+    public void SwitchState(EnemyState state)
+    {
+        _currentState = state;
+        _behaviours[_currentBehaviourIndex].behaviour.OnBehaviourStart();
     }
 }

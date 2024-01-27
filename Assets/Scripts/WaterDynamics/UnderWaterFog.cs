@@ -12,12 +12,16 @@ public class UnderWaterFog : MonoBehaviour
     private BoxCollider fogBounds;
     private Color defaultFog; 
     private float defaultDensity;
+    WaterCallbacks waterCallbacks;
     // Start is called before the first frame update
     void Start()
     {
         fogBounds = GetComponent<BoxCollider>();
         defaultFog = RenderSettings.fogColor;
         defaultDensity = RenderSettings.fogDensity;
+        waterCallbacks = GetComponent<WaterCallbacks>();
+        waterCallbacks.OnWaterEnter.AddListener(OnWaterEnter);
+        waterCallbacks.OnWaterExit.AddListener(OnWaterExit);
     }
 
     // Update is called once per frame
@@ -25,22 +29,18 @@ public class UnderWaterFog : MonoBehaviour
     {
       
        
-        //check if camera is in the saaame x and z position as the fog bounds
-        if(Camera.main.transform.position.x > fogBounds.bounds.min.x && Camera.main.transform.position.x < fogBounds.bounds.max.x && Camera.main.transform.position.z > fogBounds.bounds.min.z && Camera.main.transform.position.z < fogBounds.bounds.max.z)
-        {
-            if(Camera.main.transform.position.y < fogBounds.bounds.max.y)
-            {
-                RenderSettings.fogColor = underwaterFog;
-                RenderSettings.fogDensity = fogDensity;
-                return;
-            }
-            else
-            {
-                
-        
-                RenderSettings.fogColor = defaultFog;
-                RenderSettings.fogDensity = defaultDensity;
-            }
-        }
+       
     }
+    
+    private void OnWaterEnter()
+    {
+        RenderSettings.fogColor = underwaterFog;
+        RenderSettings.fogDensity = fogDensity;
+    }
+    private void OnWaterExit()
+    {
+        RenderSettings.fogColor = defaultFog;
+        RenderSettings.fogDensity = defaultDensity;
+    }
+    
 }
