@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DefaultNamespace
 {
     public class CameraTransition : MonoBehaviour
     {
         [SerializeField]private Camera cam;
+        [SerializeField]private Transform camTransform;
+        [SerializeField] private Canvas c;
         public float delay = 5f;
         public float transitionTime = 1f;
         private void Start()
@@ -20,11 +23,10 @@ namespace DefaultNamespace
 
         public void StartTransition()
         {
-            cam.gameObject.SetActive(true);
-            LeanTween.value(1, .5f, transitionTime).setOnUpdate((float val) =>
-            {
-                Camera.main.rect = new Rect(1, 1, val, 1);
-            });
+            c.gameObject.SetActive(true);
+            cam.transform.position = camTransform.position;
+            cam.transform.rotation = camTransform.rotation;
+            
             Invoke(nameof(Resetcam),delay);
 
         }
@@ -32,11 +34,7 @@ namespace DefaultNamespace
         public void Resetcam()
         {
 
-            cam.enabled = false;
-            LeanTween.value(Camera.main.rect.width, 1f, 0.5f).setOnUpdate((float val) =>
-            {
-                Camera.main.rect = new Rect(1, 1, val, 1);
-            });
+            c.gameObject.SetActive(false);
         }
     }
 }
