@@ -71,6 +71,24 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrimaryInteract"",
+                    ""type"": ""Button"",
+                    ""id"": ""c59cca82-3260-4601-9ddc-9009803b5c40"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondaryInteract"",
+                    ""type"": ""Button"",
+                    ""id"": ""bdc4425f-11d1-4ced-9385-3d18c265902f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -271,6 +289,50 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
                     ""action"": ""ResetOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ebbe628b-9a2b-4f21-b560-2b463f085d8b"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""PrimaryInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ecc4af89-cf29-4b90-ab04-48a65fdb60e7"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""PrimaryInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27e59f27-bd17-430c-9564-aa4e48be4e3a"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""SecondaryInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d2551f0-8d4f-40f4-8ea6-42c1e0446d5c"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondaryInteract"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -395,6 +457,8 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
         m_DolphinMovement_Steer = m_DolphinMovement.FindAction("Steer", throwIfNotFound: true);
         m_DolphinMovement_Dash = m_DolphinMovement.FindAction("Dash", throwIfNotFound: true);
         m_DolphinMovement_ResetOrientation = m_DolphinMovement.FindAction("ResetOrientation", throwIfNotFound: true);
+        m_DolphinMovement_PrimaryInteract = m_DolphinMovement.FindAction("PrimaryInteract", throwIfNotFound: true);
+        m_DolphinMovement_SecondaryInteract = m_DolphinMovement.FindAction("SecondaryInteract", throwIfNotFound: true);
         // CameraLook
         m_CameraLook = asset.FindActionMap("CameraLook", throwIfNotFound: true);
         m_CameraLook_Camera = m_CameraLook.FindAction("Camera", throwIfNotFound: true);
@@ -464,6 +528,8 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_DolphinMovement_Steer;
     private readonly InputAction m_DolphinMovement_Dash;
     private readonly InputAction m_DolphinMovement_ResetOrientation;
+    private readonly InputAction m_DolphinMovement_PrimaryInteract;
+    private readonly InputAction m_DolphinMovement_SecondaryInteract;
     public struct DolphinMovementActions
     {
         private @DolphinInputs m_Wrapper;
@@ -473,6 +539,8 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
         public InputAction @Steer => m_Wrapper.m_DolphinMovement_Steer;
         public InputAction @Dash => m_Wrapper.m_DolphinMovement_Dash;
         public InputAction @ResetOrientation => m_Wrapper.m_DolphinMovement_ResetOrientation;
+        public InputAction @PrimaryInteract => m_Wrapper.m_DolphinMovement_PrimaryInteract;
+        public InputAction @SecondaryInteract => m_Wrapper.m_DolphinMovement_SecondaryInteract;
         public InputActionMap Get() { return m_Wrapper.m_DolphinMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -497,6 +565,12 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
             @ResetOrientation.started += instance.OnResetOrientation;
             @ResetOrientation.performed += instance.OnResetOrientation;
             @ResetOrientation.canceled += instance.OnResetOrientation;
+            @PrimaryInteract.started += instance.OnPrimaryInteract;
+            @PrimaryInteract.performed += instance.OnPrimaryInteract;
+            @PrimaryInteract.canceled += instance.OnPrimaryInteract;
+            @SecondaryInteract.started += instance.OnSecondaryInteract;
+            @SecondaryInteract.performed += instance.OnSecondaryInteract;
+            @SecondaryInteract.canceled += instance.OnSecondaryInteract;
         }
 
         private void UnregisterCallbacks(IDolphinMovementActions instance)
@@ -516,6 +590,12 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
             @ResetOrientation.started -= instance.OnResetOrientation;
             @ResetOrientation.performed -= instance.OnResetOrientation;
             @ResetOrientation.canceled -= instance.OnResetOrientation;
+            @PrimaryInteract.started -= instance.OnPrimaryInteract;
+            @PrimaryInteract.performed -= instance.OnPrimaryInteract;
+            @PrimaryInteract.canceled -= instance.OnPrimaryInteract;
+            @SecondaryInteract.started -= instance.OnSecondaryInteract;
+            @SecondaryInteract.performed -= instance.OnSecondaryInteract;
+            @SecondaryInteract.canceled -= instance.OnSecondaryInteract;
         }
 
         public void RemoveCallbacks(IDolphinMovementActions instance)
@@ -604,6 +684,8 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
         void OnSteer(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnResetOrientation(InputAction.CallbackContext context);
+        void OnPrimaryInteract(InputAction.CallbackContext context);
+        void OnSecondaryInteract(InputAction.CallbackContext context);
     }
     public interface ICameraLookActions
     {

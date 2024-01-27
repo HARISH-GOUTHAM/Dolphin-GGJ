@@ -20,7 +20,9 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
     [SerializeField] private bool isUnderWater;
 
     private float lastTimeDashed;
-
+    [SerializeField] private Transform interactPoint;
+    [SerializeField] private Vector3 interactBoxSize;
+    private bool isPrimaryInteracting, isSecondaryInteracting;
 
 
     [SerializeField] public PlayerStats playerStats;
@@ -93,6 +95,51 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
         rb.drag = playerStats.airDrag;
     }
 
+
+
+
+
+    #region Inputss
+
+    
+
+
+    public void OnSteer(InputAction.CallbackContext context)
+    {
+        stearInput=context.ReadValue<Vector2>();
+    }
+
+    public void OnResetOrientation(InputAction.CallbackContext context)
+    {
+        //tween the x and z rotation to 0
+        LeanTween.rotateX(gameObject, 0, 0.5f);
+        LeanTween.rotateZ(gameObject, 0, 0.5f);
+        
+    }
+
+    public void OnPrimaryInteract(InputAction.CallbackContext context)
+    {
+        if (isPrimaryInteracting)
+        {
+            //drop the object
+        }
+        else
+        {
+           
+        }
+    }
+
+    public void OnSecondaryInteract(InputAction.CallbackContext context)
+    {
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if(context.started )
+            Dash();
+            
+    }
+    
     public void OnAccelerate(InputAction.CallbackContext context)
     {
         accelerationInput = context.ReadValue<float>();
@@ -103,26 +150,10 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
         decelerationInput = context.ReadValue<float>();
     }
 
+
+    #endregion
     
-
-    public void OnDash(InputAction.CallbackContext context)
-    {
-        if(context.started )
-        Dash();
-            
-    }
-
-   
-
-    public void OnSteer(InputAction.CallbackContext context)
-    {
-        stearInput=context.ReadValue<Vector2>();
-    }
-
-    public void OnResetOrientation(InputAction.CallbackContext context)
-    {
-        transform.rotation =  Quaternion.identity;
-    }
+    
 }
 [Serializable]
 public class PlayerStats

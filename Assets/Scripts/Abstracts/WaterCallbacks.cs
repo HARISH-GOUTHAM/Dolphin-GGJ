@@ -35,6 +35,9 @@ public class WaterCallbacks : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        //only execute when in play mode
+        if (!Application.isPlaying)
+            return;
         Gizmos.color = Color.blue;
         Gizmos.DrawSphere(new Vector3(transform.position.x, GerstnerWaveDisplacement.instance.GetWaveDisplacement(transform.position), transform.position.z), 0.5f);
     }
