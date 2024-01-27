@@ -89,6 +89,15 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Laugh"",
+                    ""type"": ""Button"",
+                    ""id"": ""9592030a-bbf3-4b8d-9255-03d96e900015"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -333,6 +342,28 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
                     ""action"": ""SecondaryInteract"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ac79b0b-a425-43bf-bade-543b5e9f0dbf"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Laugh"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""263b8262-6ac7-4bab-84b5-3942f32ab155"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Laugh"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -459,6 +490,7 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
         m_DolphinMovement_ResetOrientation = m_DolphinMovement.FindAction("ResetOrientation", throwIfNotFound: true);
         m_DolphinMovement_PrimaryInteract = m_DolphinMovement.FindAction("PrimaryInteract", throwIfNotFound: true);
         m_DolphinMovement_SecondaryInteract = m_DolphinMovement.FindAction("SecondaryInteract", throwIfNotFound: true);
+        m_DolphinMovement_Laugh = m_DolphinMovement.FindAction("Laugh", throwIfNotFound: true);
         // CameraLook
         m_CameraLook = asset.FindActionMap("CameraLook", throwIfNotFound: true);
         m_CameraLook_Camera = m_CameraLook.FindAction("Camera", throwIfNotFound: true);
@@ -530,6 +562,7 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_DolphinMovement_ResetOrientation;
     private readonly InputAction m_DolphinMovement_PrimaryInteract;
     private readonly InputAction m_DolphinMovement_SecondaryInteract;
+    private readonly InputAction m_DolphinMovement_Laugh;
     public struct DolphinMovementActions
     {
         private @DolphinInputs m_Wrapper;
@@ -541,6 +574,7 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
         public InputAction @ResetOrientation => m_Wrapper.m_DolphinMovement_ResetOrientation;
         public InputAction @PrimaryInteract => m_Wrapper.m_DolphinMovement_PrimaryInteract;
         public InputAction @SecondaryInteract => m_Wrapper.m_DolphinMovement_SecondaryInteract;
+        public InputAction @Laugh => m_Wrapper.m_DolphinMovement_Laugh;
         public InputActionMap Get() { return m_Wrapper.m_DolphinMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -571,6 +605,9 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
             @SecondaryInteract.started += instance.OnSecondaryInteract;
             @SecondaryInteract.performed += instance.OnSecondaryInteract;
             @SecondaryInteract.canceled += instance.OnSecondaryInteract;
+            @Laugh.started += instance.OnLaugh;
+            @Laugh.performed += instance.OnLaugh;
+            @Laugh.canceled += instance.OnLaugh;
         }
 
         private void UnregisterCallbacks(IDolphinMovementActions instance)
@@ -596,6 +633,9 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
             @SecondaryInteract.started -= instance.OnSecondaryInteract;
             @SecondaryInteract.performed -= instance.OnSecondaryInteract;
             @SecondaryInteract.canceled -= instance.OnSecondaryInteract;
+            @Laugh.started -= instance.OnLaugh;
+            @Laugh.performed -= instance.OnLaugh;
+            @Laugh.canceled -= instance.OnLaugh;
         }
 
         public void RemoveCallbacks(IDolphinMovementActions instance)
@@ -686,6 +726,7 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
         void OnResetOrientation(InputAction.CallbackContext context);
         void OnPrimaryInteract(InputAction.CallbackContext context);
         void OnSecondaryInteract(InputAction.CallbackContext context);
+        void OnLaugh(InputAction.CallbackContext context);
     }
     public interface ICameraLookActions
     {

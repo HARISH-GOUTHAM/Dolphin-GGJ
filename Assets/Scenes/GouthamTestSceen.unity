@@ -227,6 +227,8 @@ GameObject:
   - component: {fileID: 102573367}
   - component: {fileID: 102573368}
   - component: {fileID: 102573369}
+  - component: {fileID: 102573371}
+  - component: {fileID: 102573370}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -302,7 +304,7 @@ Transform:
   m_GameObject: {fileID: 102573363}
   serializedVersion: 2
   m_LocalRotation: {x: 0.190338, y: -0, z: -0, w: 0.98171866}
-  m_LocalPosition: {x: 155.31, y: 22.619999, z: 96.810005}
+  m_LocalPosition: {x: 155.31, y: 18.4, z: 107.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -384,6 +386,39 @@ MonoBehaviour:
   followTarget: {fileID: 282419944}
   offSet: {x: 0, y: 3, z: -10}
   moveSpeed: 100
+--- !u!114 &102573370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102573363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 583b748dcdb7b3c47a16e7df75f968aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  underwaterFog: {r: 0.23113209, g: 0.25051096, b: 1, a: 0.62352943}
+  fogDensity: 0.05
+--- !u!114 &102573371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102573363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e8acd6b39c7b846af726bcf9c5865c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnWaterEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWaterExit:
+    m_PersistentCalls:
+      m_Calls: []
+  isUnderWater: 0
 --- !u!1001 &208166031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -474,6 +509,7 @@ GameObject:
   - component: {fileID: 282419946}
   - component: {fileID: 282419945}
   - component: {fileID: 282419948}
+  - component: {fileID: 282419949}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -539,7 +575,8 @@ MonoBehaviour:
     waterDrag: 2
     airDrag: 0.4
     DownwardsForce: 15
-    dolphinLaugh: {fileID: 0}
+    dolphinLaugh: {fileID: 8300000, guid: a67a0dc223e54754ea7a1fbfad386880, type: 3}
+    laughVol: 0.04
 --- !u!4 &282419947
 Transform:
   m_ObjectHideFlags: 0
@@ -576,6 +613,102 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isUnderWater: 0
+--- !u!82 &282419949
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282419944}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!43 &438177019
 Mesh:
   m_ObjectHideFlags: 0
@@ -968,6 +1101,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071001469551236635, guid: 0092b8b67fb893f4d9f8ba62cb45a972,
+        type: 3}
+      propertyPath: waterObjectHeigth
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2274,7 +2412,7 @@ Transform:
   m_GameObject: {fileID: 1182569872}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 223.34, y: 7.4, z: 170.31}
+  m_LocalPosition: {x: 223.34, y: 1.77, z: 169.5}
   m_LocalScale: {x: 9.286917, y: 9.286917, z: 9.286917}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3240,7 +3378,7 @@ Transform:
   m_GameObject: {fileID: 1588989201}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 100.34, y: 17.9, z: 164.81}
+  m_LocalPosition: {x: 160.5, y: -6, z: 164.2}
   m_LocalScale: {x: 9.286917, y: 9.286917, z: 9.286917}
   m_ConstrainProportionsScale: 0
   m_Children: []

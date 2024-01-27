@@ -14,6 +14,8 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
 
     private Rigidbody rb;
 
+    private AudioSource audioSource;
+
     [SerializeField] private float accelerationInput;
     [SerializeField] private float decelerationInput;
     [SerializeField] private Vector2 stearInput;
@@ -50,6 +52,7 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
         rb = GetComponent<Rigidbody>();
         _waterCallbacks.OnWaterEnter.AddListener(OnwaterEnter);
         _waterCallbacks.OnWaterExit.AddListener(OnwaterExit);
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -189,10 +192,16 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
         decelerationInput = context.ReadValue<float>();
     }
 
+    public void OnLaugh(InputAction.CallbackContext context)
+    {
+        audioSource.PlayOneShot(playerStats.dolphinLaugh, playerStats.laughVol);
+        
+    }
+
 
     #endregion
-    
-    
+
+
 }
 [Serializable]
 public class PlayerStats
@@ -208,6 +217,8 @@ public class PlayerStats
     public float DownwardsForce;
 
     public AudioClip dolphinLaugh;
+    [Range(0, 1)]
+    public float laughVol;
 
 
 
