@@ -5,6 +5,8 @@ namespace Abstracts
 {
     public interface IInteractable
     {
+        
+        
         public void PrimaryInteract(Transform parent = null);
         
         public void SecondaryInteract();

@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using AI;
 using UnityEngine;
 
-public class BallStolenBehaviour : EnemyBehaviour
+public class BallStolenBehaviour : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,20 +14,5 @@ public class BallStolenBehaviour : EnemyBehaviour
     void Update()
     {
         
-    }
-
-    public override void PerformBehaviour()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnBehaviourEnd()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void OnBehaviourStart()
-    {
-        throw new System.NotImplementedException();
     }
 }
