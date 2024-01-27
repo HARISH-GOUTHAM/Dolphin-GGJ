@@ -9,7 +9,12 @@ public class VolleyballEnemyIdle : EnemyBehaviour
     
     [SerializeField] private Animator _animator;
     [SerializeField]private string idleAnimationStateName = "Idle";
-    
+
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
     public override void PerformBehaviour()
     {
         SwitchCaseCondition();
