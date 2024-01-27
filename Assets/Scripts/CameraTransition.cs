@@ -24,8 +24,9 @@ namespace DefaultNamespace
         public void StartTransition()
         {
             c.gameObject.SetActive(true);
-            cam.transform.position = camTransform.position;
-            cam.transform.rotation = camTransform.rotation;
+            cam.transform.SetParent(camTransform);
+            cam.transform.localPosition = Vector3.zero;
+            cam.transform.localRotation = Quaternion.identity;
             
             Invoke(nameof(Resetcam),delay);
 
