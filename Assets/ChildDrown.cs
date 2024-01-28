@@ -31,15 +31,17 @@ public class ChildDrown : EnemyBehaviour
 
     public override void OnBehaviourStart()
     {
+        DolphinTasks.Instance.Strike(1);
         parentAnimator.Play(swimingAnimation);
         father.GetComponent<FollowChild>().lostchild = true;
-        
+        LeanTween.move(child, target.position,
+            Vector3.Distance(target.position, child.transform.position) / childSpeed);
+
     }
 
     public override void PerformBehaviour()
     {
-        Vector3 c = (target.position - child.transform.position).normalized * childSpeed * Time.deltaTime;
-        child.transform.position += new Vector3(c.x,child.transform.position.y,c.z);
+        
     }
     
 }
