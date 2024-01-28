@@ -43,7 +43,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Distance: 20
-    - _FoamAmount: 15.95
+    - _FoamAmount: 22.1
     - _FoamSpeed: 1
     - _NormalStrength: 0.89
     - _QueueControl: 0
@@ -51,7 +51,7 @@ Material:
     - _RefractStrength: 0.002
     - _Smoothness: 0.643
     - _Speed: 0.05
-    - _foamCutout: 7.96
+    - _foamCutout: 2.8
     - _highFrequency: 0.85
     - _normalStrenght: 0.01
     - _waveAmplitude: 0.15

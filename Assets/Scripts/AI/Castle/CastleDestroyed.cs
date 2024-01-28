@@ -22,6 +22,7 @@ namespace AI.Castle
             castleAnim.SetBool("destroyed",true);
             transition.StartTransition();
             DolphinLaugh.instance.PlayLaugh();
+            DolphinTasks.Instance.Strike(0);
         }
     }
 }

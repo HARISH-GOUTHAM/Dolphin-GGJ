@@ -25,6 +25,7 @@ public class ParachuteGuyflewAway : EnemyBehaviour
 
     public override void OnBehaviourStart()
     {
+        DolphinTasks.Instance.Strike(2);
         flyingGuyAnim.SetBool("flewAway",true);
         jetSkiAnim.SetBool("flewAway",true);
         transition.StartTransition();

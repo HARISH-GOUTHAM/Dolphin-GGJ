@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace AI.Fisherman
 {
@@ -6,6 +7,7 @@ namespace AI.Fisherman
     {
 
         [SerializeField]private Animator _animator;
+        
         
         public override void PerformBehaviour()
         {
@@ -32,8 +34,11 @@ namespace AI.Fisherman
         }
         void playHitSound()
         {
+            DolphinTasks.Instance.Strike(3);
             GetComponent<AudioSource>().Play();
             DolphinLaugh.instance.PlayLaugh();
         }
+        
+        
     }
 }
