@@ -12,6 +12,7 @@ public class ParachuteGuyflewAway : EnemyBehaviour
      public Animator flyingGuyAnim;
      public Animator jetSkiAnim;
      public CameraTransition transition;
+     public AudioSource audioSource;
     public override void PerformBehaviour()
     {
         
@@ -27,5 +28,8 @@ public class ParachuteGuyflewAway : EnemyBehaviour
         flyingGuyAnim.SetBool("flewAway",true);
         jetSkiAnim.SetBool("flewAway",true);
         transition.StartTransition();
+        audioSource.Play();
+        DolphinLaugh.instance.PlayLaugh();
+        
     }
 }

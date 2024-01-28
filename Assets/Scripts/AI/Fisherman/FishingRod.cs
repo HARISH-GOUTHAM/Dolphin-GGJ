@@ -9,7 +9,8 @@ namespace AI.Fisherman
     {
 
         private LineRenderer _renderer;
-        public Transform lineStart; 
+        public Transform lineStart;
+
         
 
         private void Start()
@@ -21,6 +22,7 @@ namespace AI.Fisherman
         {
             transform.SetParent(parent);
             transform.localPosition = Vector3.zero;
+            
         }
 
         public void SecondaryInteract()
@@ -30,6 +32,8 @@ namespace AI.Fisherman
 
         private void Update()
         {
+            
+            
             _renderer.SetPositions(new []{
                 transform.position,
                 lineStart.position
