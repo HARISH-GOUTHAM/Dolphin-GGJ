@@ -21,7 +21,7 @@ public class FollowChild : MonoBehaviour
         if (!lostchild) return;
         dir= child.transform.position-transform.position;
         dir= dir.normalized;
-        dir*=speed;
+        dir*=speed * Time.deltaTime;
         transform.LookAt(child.transform);
         transform.Translate(dir);
 
