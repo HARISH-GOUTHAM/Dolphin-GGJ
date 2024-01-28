@@ -30,6 +30,7 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
     private bool isPrimaryInteracting, isSecondaryInteracting;
     private IInteractable interactingObj;
 
+    [SerializeField] ParticleSystem waterShootParticles;
 
     [SerializeField] public PlayerStats playerStats;
 
@@ -138,6 +139,8 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
         {
             Collider[] interactables = Physics.OverlapBox(interactPoint.position, interactBoxSize, Quaternion.identity, interactablelayer);
             
+            if(interactables.Length==0) return;
+            
             Collider closestInteractable = null;
             //get the closest interactable
             foreach (var i in interactables)
@@ -170,9 +173,19 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
 
     public void OnSecondaryInteract(InputAction.CallbackContext context)
     {
-        //perform the action depending on the object that is currently held
+        if(context.started)
+            waterShootParticles.Play();
+        else if (context.canceled)
+        {
+            waterShootParticles.Stop();
+        }
     }
 
+    public void ShootWater()
+    {
+        
+    }
+    
     public void OnDash(InputAction.CallbackContext context)
     {
         if(context.started)
