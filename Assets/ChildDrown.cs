@@ -6,14 +6,18 @@ using UnityEngine;
 public class ChildDrown : EnemyBehaviour
 {
     public GameObject father;
+    public GameObject child;
+    public Transform target;
     public Animator parentAnimator;
     public string swimingAnimation = "Swimming";
     public float stolenAnimationTime = 1.0f;
+    public float childSpeed = 1.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         parentAnimator = father.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -23,7 +27,6 @@ public class ChildDrown : EnemyBehaviour
     }
     public override void OnBehaviourEnd()
     {
-        throw new System.NotImplementedException();
     }
 
     public override void OnBehaviourStart()
@@ -35,7 +38,8 @@ public class ChildDrown : EnemyBehaviour
 
     public override void PerformBehaviour()
     {
-
+        Vector3 c = (target.position - child.transform.position).normalized * childSpeed * Time.deltaTime;
+        child.transform.position += new Vector3(c.x,child.transform.position.y,c.z);
     }
     
 }
