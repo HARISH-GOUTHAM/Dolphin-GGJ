@@ -21,6 +21,7 @@ namespace AI.Fisherman
         {
             _animator.SetBool("isHolding",true);
             Invoke(nameof(resetAnim),1f);
+            Invoke(nameof(playHitSound),3f);
             
         }
 
@@ -28,6 +29,11 @@ namespace AI.Fisherman
         {
             
             _animator.SetBool("isHolding",false);
+        }
+        void playHitSound()
+        {
+            GetComponent<AudioSource>().Play();
+            DolphinLaugh.instance.PlayLaugh();
         }
     }
 }

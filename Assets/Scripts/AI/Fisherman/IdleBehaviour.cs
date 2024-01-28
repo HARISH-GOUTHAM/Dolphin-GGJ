@@ -15,6 +15,7 @@ public class IdleBehaviour : EnemyBehaviour
     {
         if (Vector3.Distance(rod.transform.position, rod.lineStart.position)>30)
         {
+            rod.gameObject.SetActive(false);
             _transition.StartTransition();
             SwitchState();
         }
