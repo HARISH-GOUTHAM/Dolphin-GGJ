@@ -16,12 +16,19 @@ public abstract class AbstractMenu : MonoBehaviour
         {
             parent.currentUI.SetActive(true);
             currentUI.SetActive(false);
-        } 
+        }
+        else
+        {
+          
+            currentUI.SetActive(false);
+            Time.timeScale = 1;
+        }
     }
         
     public void GoToChild(int index)
     {
         children[index].currentUI.SetActive(true);
+        children[index].parent = this;
         currentUI.SetActive(false) ;
 
     }
