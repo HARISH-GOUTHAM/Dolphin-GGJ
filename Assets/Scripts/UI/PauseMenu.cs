@@ -75,7 +75,7 @@ public class PauseMenu : AbstractMenu
     public void MainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenuFinal");
     }
 
 
