@@ -21,8 +21,6 @@ namespace AI.Fisherman
         {
             transform.SetParent(parent);
             transform.localPosition = Vector3.zero;
-            
-            
         }
 
         public void SecondaryInteract()
@@ -40,7 +38,7 @@ namespace AI.Fisherman
 
         public void StopInteract()
         {
-            throw new NotImplementedException();
+            transform.SetParent(null);
         }
     }
 }

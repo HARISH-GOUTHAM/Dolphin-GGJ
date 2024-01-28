@@ -31,7 +31,7 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
     private IInteractable interactingObj;
 
     [SerializeField] ParticleSystem waterShootParticles;
-
+    [SerializeField] Animator dolphinAnimator;
     [SerializeField] public PlayerStats playerStats;
 
     private void OnEnable()
@@ -65,6 +65,12 @@ public class DolphinMovement : MonoBehaviour, DolphinInputs.IDolphinMovementActi
     {
         Move();
         ApplyDownwardsForce();
+        
+        if(accelerationInput>0.1f)
+            dolphinAnimator.SetBool("IsSwimming",true);
+        else
+            dolphinAnimator.SetBool("IsSwimming",false);
+            
     }
 
     private void Move()

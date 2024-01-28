@@ -40,7 +40,7 @@ public class ParentChildIdle : EnemyBehaviour
 
     void SwitchCaseCondition()
     {
-        if (Vector3.Distance(father.transform.position, child.transform.position) > 5)
+        if (Vector3.Distance(father.transform.position, child.transform.position) > 30)
         {
             SwitchState();
         }

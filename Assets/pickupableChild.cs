@@ -19,6 +19,7 @@ public class pickupableChild : MonoBehaviour,IInteractable
     }
     public void PrimaryInteract(Transform parent = null)
     {
+        return;
         if (parent != null)
         {
             rb.useGravity = false;

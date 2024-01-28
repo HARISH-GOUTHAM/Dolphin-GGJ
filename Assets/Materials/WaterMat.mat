@@ -58,11 +58,11 @@ Material:
     - _waveLength: 12.33
     - _waveSpeed: -4
     m_Colors:
-    - _DeepColor: {r: 0.17254904, g: 0.28497893, b: 0.35686275, a: 0.8862745}
+    - _DeepColor: {r: 0.17254895, g: 0.28497884, b: 0.35686266, a: 0.36078432}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _FoamScale: {r: 1, g: 1, b: 0, a: 0}
     - _Scale: {r: 0.1, g: 0.1, b: 0, a: 0}
-    - _SurfaceColor: {r: 0.22761656, g: 0.5188679, b: 0.50129235, a: 0.31764707}
+    - _SurfaceColor: {r: 0.22761649, g: 0.5188678, b: 0.50129235, a: 0.09411765}
     - _WaveDirection: {r: 0.9, g: 1, b: 1.05, a: 0.97}
     - _waveDirection: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

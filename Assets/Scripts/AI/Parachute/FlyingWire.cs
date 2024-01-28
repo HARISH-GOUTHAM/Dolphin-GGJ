@@ -36,7 +36,7 @@ namespace AI.Parachute
 
         public void StopInteract()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
