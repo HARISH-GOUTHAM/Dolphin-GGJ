@@ -6,31 +6,41 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : AbstractMenu
 {
-    public Transform respawnPoint;
+    public Transform RespawnPoint;
     public Transform player;
     public AudioSource respawnSound;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        RespawnPoint = GameObject.FindGameObjectWithTag("RespawnPoint").GetComponent<Transform>();
     }
 
     private void Update()
     {
-     //   if (Gamepad.current == null) return;
-        if (/*Gamepad.current.startButton.IsPressed()||*/Input.GetKeyDown(KeyCode.Escape))
+        if (Gamepad.current == null)
         {
-            if (!inMenu)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Time.timeScale = 0f;
-                currentUI.SetActive(true);
-                inMenu = true;
+                if (!inMenu)
+                {
+                    Time.timeScale = 0f;
+                    currentUI.SetActive(true);
+                    inMenu = true;
+                }
+
             }
-            else
+        }
+        else
+        {
+            if (Gamepad.current.startButton.IsPressed() || Input.GetKeyDown(KeyCode.Escape))
             {
-                inMenu = false;
-                Time.timeScale = 0f;
-                currentUI.SetActive(true);
+                if (!inMenu)
+                {
+                    Time.timeScale = 0f;
+                    currentUI.SetActive(true);
+                    inMenu = true;
+                }
 
             }
         }
@@ -38,13 +48,19 @@ public class PauseMenu : AbstractMenu
 
     public void Resume()
     {
+        inMenu = false;
         GoToParent();
     }
 
     public void Respawn() 
     {
-        player.position = respawnPoint.position;
+        player.position = RespawnPoint.position;
         respawnSound.Play();
+        inMenu = false;
+        Time.timeScale = 1f;
+        currentUI.SetActive(false);
+
+
     }
     public void Controls()
     {
