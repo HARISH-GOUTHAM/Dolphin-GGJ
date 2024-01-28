@@ -18,7 +18,7 @@ public class Respawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) || Gamepad.current.rightStickButton.wasPressedThisFrame)
+        if (Input.GetKeyDown(KeyCode.P) || (Gamepad.current!=null &&  Gamepad.current.rightStickButton.wasPressedThisFrame))
         {
             player.position = respawnPoint.position;
             respawnSound.Play();
