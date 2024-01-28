@@ -335,7 +335,7 @@ public partial class @DolphinInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""3d2551f0-8d4f-40f4-8ea6-42c1e0446d5c"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
