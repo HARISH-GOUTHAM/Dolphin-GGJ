@@ -10,7 +10,7 @@ public class ParentChildIdle : EnemyBehaviour
     public float stolenAnimationTime = 1.0f;
     public GameObject father;
     public GameObject child;
-
+    public pickupableChild pickChild;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,10 +40,10 @@ public class ParentChildIdle : EnemyBehaviour
 
     void SwitchCaseCondition()
     {
-        if (Vector3.Distance(father.transform.position, child.transform.position) > 30)
+
+        if (pickChild.swimAway)
         {
             SwitchState();
         }
-
     }
 }

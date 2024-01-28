@@ -19,14 +19,10 @@ public class pickupableChild : MonoBehaviour,IInteractable
     }
     public void PrimaryInteract(Transform parent = null)
     {
-        return;
-        if (parent != null)
-        {
-            rb.useGravity = false;
-            transform.position = parent.position;
-            transform.SetParent(parent);
-            return;
-        }
+
+       
+        swimAway = true;
+
     }
   
     public void EntersWater()
@@ -42,18 +38,11 @@ public class pickupableChild : MonoBehaviour,IInteractable
 
     public void StopInteract()
     {
-        transform.parent = null;
-        rb.useGravity = true;
-        rb.isKinematic = false;
-        swimAway = true;
+        
     }
     private void Update()
     {
-        if (!swimAway) return;
-        Vector3 dir = target.position - transform.position;
-        dir = dir.normalized;
-        dir*=speed;
-        transform.Translate(dir);
+       
     }
 
     // Start is called before the first frame update
