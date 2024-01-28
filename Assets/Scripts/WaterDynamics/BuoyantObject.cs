@@ -74,6 +74,8 @@ public class BuoyantObject : MonoBehaviour
             // torque
             rb.AddTorque(-rb.angularVelocity * (angularDrag * Time.fixedDeltaTime), ForceMode.Impulse);
         }
+        
+     
     }
 
     private void OnDrawGizmos()
