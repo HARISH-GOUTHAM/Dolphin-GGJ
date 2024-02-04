@@ -44,6 +44,13 @@ public class PauseMenu : AbstractMenu
 
             }
         }
+        
+        if(inMenu)
+            Cursor.lockState = CursorLockMode.None;
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     public void Resume()
